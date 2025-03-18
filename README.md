@@ -21,11 +21,11 @@ Use $x() -> XPATH and $$() -> CSS in chrome console panel.
 
 # PLAYWRIGHT SPECIFICS
 
-1. Install playwright deps and essentials
+1. Install playwright deps and browser essentials
 - `pip3 install playwright`
 - `playwright install`
 
-2. Dynamic run and code gen
+2. Test generator to generate tests
 - `playwright codegen www.google.com`
 
 3. View Trace
