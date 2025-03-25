@@ -18,12 +18,12 @@ with sync_playwright() as playwright_context:
 
     # Launch the browser
     browser = playwright_context.chromium.launch(headless=False, slow_mo=1000)
-    context = browser.new_context()
+    browser_context = browser.new_context()
 
     # Start tracing
-    context.tracing.start(name="trace", screenshots=True, snapshots=True, sources=True)
+    browser_context.tracing.start(name="trace", screenshots=True, snapshots=True, sources=True)
 
-    page = context.new_page()
+    page = browser_context.new_page()
     # 1. Navigate to https://www.amazon.in/
     page.goto("https://www.amazon.in/")
 
@@ -49,10 +49,11 @@ with sync_playwright() as playwright_context:
     # 6. Select second tiffin box
     page.click(selector="//div[@data-index='5']")
 
-    print(context.pages)
-    print(context.pages[1].url)
+    print(browser_context.pages)
+    print(browser_context.pages[1].url)
 
-    page2 = context.pages[1]
+    # Fetch handle of new tab/window
+    page2 = browser_context.pages[1]
 
     # 7. Now Try to buy the second product from the “Tiffin box”
 
@@ -77,10 +78,11 @@ with sync_playwright() as playwright_context:
     # locator_assertions.to_have_text()
 
     # Take screenshot
-    page2.screenshot(path="amazon.png")
+    page2.screenshot(path="test-results/amazon.png")
 
     # Stop tracing and export to ZIP file
-    context.tracing.stop(path="trace.zip")
+    browser_context.tracing.stop(path="test-results/trace.zip")
 
-    context.close()
+
+    browser_context.close()
     browser.close()
