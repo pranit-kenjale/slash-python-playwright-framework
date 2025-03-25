@@ -3,7 +3,7 @@ import pytest_playwright as playwright
 
 from playwright.sync_api import sync_playwright, expect, Page
 
-def get_pw_driver(playwright):
+def get_pw_driver():
 
     # with sync_playwright() as playwright_context:
     #     # Launch the browser
@@ -16,9 +16,9 @@ def get_pw_driver(playwright):
     #     page = context.new_page()
     #     return page
 
-    play_context = sync_playwright().start()
+    playwright_context = sync_playwright().start()
     # Launch the browser
-    browser = playwright.chromium.launch(headless=False, slow_mo=1000)
+    browser = playwright_context.chromium.launch(headless=False, slow_mo=1000)
     context = browser.new_context()
 
     # Start tracing
