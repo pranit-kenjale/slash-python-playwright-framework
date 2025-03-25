@@ -22,7 +22,7 @@ Use $x() -> XPATH and $$() -> CSS in chrome console panel.
 # PLAYWRIGHT SPECIFICS
 
 1. Install playwright deps and browser essentials
-- `pip3 install playwright`
+- `pip3 install pytest-playwright`
 - `playwright install`
 
 2. Test generator to generate tests
@@ -31,3 +31,23 @@ Use $x() -> XPATH and $$() -> CSS in chrome console panel.
 3. View Trace
 - `playwright show-trace trace.zip`
 
+
+# RUNNING TESTS
+
+## Run all tests
+`pytest`
+
+## Run tests with specific browser
+`pytest --browser chromium`
+
+## Run with browser in headed mode (visually see the browser)
+`pytest --browser chromium --headed`
+
+## Run with HTML report
+`pytest --browser chromium --html=report.html`
+
+
+# LINUX HELPERS
+
+## Identify the exact file or library where the string is defined
+`grep -r "/test-results"`
